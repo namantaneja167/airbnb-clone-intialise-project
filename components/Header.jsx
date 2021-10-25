@@ -1,4 +1,4 @@
-import Image from 'next/Image';
+import Image from 'next/image';
 import Logo from '../img/Airbnb_Logo_Bélo.svg.png';
 import {GlobeAltIcon,MenuIcon,UserCircleIcon,SearchIcon,UsersIcon} from '@heroicons/react/solid';
 
