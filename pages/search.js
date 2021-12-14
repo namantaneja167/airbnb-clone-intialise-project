@@ -6,12 +6,13 @@ import { format } from "date-fns";
 import InfoCard from "../components/InfoCard";
 
 const Search = ({ searchResults }) => {
-  console.log(searchResults);
   const router = useRouter();
   const { location, startDate, endDate, noOfGuests } = router.query;
-  const formattedStartDate = format(new Date(startDate), "dd MMMM yy");
-  const formattedEndDate = format(new Date(endDate), "dd MMMM yy");
+  const formattedStartDate = format(new Date(2021, 14, 12), "MM/dd/yyyy");
+  const formattedEndDate = format(new Date(2021, 19, 12), "MM/dd/yyyy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
+  console.log(searchResults);
+
   return (
     <div>
       <Header placeholder={`${location} || ${range} || ${noOfGuests}`} />
@@ -30,7 +31,7 @@ const Search = ({ searchResults }) => {
             <p className="button">Rooms and Beds</p>
             <p className="button">More filters</p>
           </div>
-          {/* {searchResults.map(
+          {searchResults.map(
             ({ img, location, title, description, star, price, total }) => {
               <InfoCard
                 key={img}
@@ -43,7 +44,7 @@ const Search = ({ searchResults }) => {
                 total={total}
               />;
             }
-          )} */}
+          )}
         </section>
       </main>
       <Footer />
@@ -53,11 +54,9 @@ const Search = ({ searchResults }) => {
 
 export default Search;
 
-export async function gtServerSideProps() {
+export async function getServerSideProps() {
   const searchResults = await fetch("https://links.papareact.com/isz").then(
-    (res) => {
-      res.json();
-    }
+    (res) => res.json()
   );
 
   return {
