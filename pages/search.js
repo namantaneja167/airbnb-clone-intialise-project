@@ -11,7 +11,6 @@ const Search = ({ searchResults }) => {
   const formattedStartDate = format(new Date(2021, 14, 12), "MM/dd/yyyy");
   const formattedEndDate = format(new Date(2021, 19, 12), "MM/dd/yyyy");
   const range = `${formattedStartDate} - ${formattedEndDate}`;
-  console.log(searchResults);
 
   return (
     <div>
@@ -33,16 +32,18 @@ const Search = ({ searchResults }) => {
           </div>
           {searchResults.map(
             ({ img, location, title, description, star, price, total }) => {
-              <InfoCard
-                key={img}
-                img={img}
-                location={location}
-                title={title}
-                description={description}
-                star={star}
-                price={price}
-                total={total}
-              />;
+              return (
+                <InfoCard
+                  key={img}
+                  img={img}
+                  location={location}
+                  title={title}
+                  description={description}
+                  star={star}
+                  price={price}
+                  total={total}
+                />
+              );
             }
           )}
         </section>
