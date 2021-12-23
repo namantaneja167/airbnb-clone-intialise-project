@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { HeartIcon } from "@heroicons/react/outline";
 import { StarIcon } from "@heroicons/react/solid";
+import { useRouter } from "next/router";
 
 const InfoCard = ({
   img,
@@ -11,8 +12,15 @@ const InfoCard = ({
   price,
   total,
 }) => {
+  const router = useRouter();
+
   return (
-    <div className="flex py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg">
+    <div
+      className="flex py-7 px-2 pr-4 border-b cursor-pointer hover:opacity-80 hover:shadow-lg"
+      onClick={() => {
+        router.push("/form");
+      }}
+    >
       <div className="relative h-24 w-40 md:h-52 md:w-80 flex-shrink-0 transition duration-200 ease-out first:border-t">
         <Image
           src={img}
